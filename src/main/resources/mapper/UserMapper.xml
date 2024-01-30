@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.fuwenhao.dao.UserDao">
+
+    <resultMap type="club.fuwenhao.entity.User" id="TUserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="uid" column="uid" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="avatarImage" column="avatar_image" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="INTEGER"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="year" column="year" jdbcType="INTEGER"/>
+        <result property="month" column="month" jdbcType="INTEGER"/>
+        <result property="day" column="day" jdbcType="INTEGER"/>
+        <result property="constellation" column="constellation" jdbcType="VARCHAR"/>
+        <result property="height" column="height" jdbcType="INTEGER"/>
+        <result property="weight" column="weight" jdbcType="INTEGER"/>
+        <result property="education" column="education" jdbcType="VARCHAR"/>
+        <result property="school" column="school" jdbcType="VARCHAR"/>
+        <result property="job" column="job" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="hometown" column="hometown" jdbcType="VARCHAR"/>
+        <result property="income" column="income" jdbcType="VARCHAR"/>
+        <result property="marriage" column="marriage" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TUserMap">
+        select id,
+               uid,
+               user_name,
+               avatar_image,
+               sex,
+               age, year, month, day, constellation, height, weight, education, school, job, address, hometown, income, marriage
+        from t_user
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TUserMap">
+        select
+        id, uid, user_name, avatar_image, sex, age, year, month, day, constellation, height, weight, education, school,
+        job, address, hometown, income, marriage
+        from t_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="uid != null">
+                and uid = #{uid}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            <if test="avatarImage != null and avatarImage != ''">
+                and avatar_image = #{avatarImage}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+            <if test="year != null">
+                and year = #{year}
+            </if>
+            <if test="month != null">
+                and month = #{month}
+            </if>
+            <if test="day != null">
+                and day = #{day}
+            </if>
+            <if test="constellation != null and constellation != ''">
+                and constellation = #{constellation}
+            </if>
+            <if test="height != null">
+                and height = #{height}
+            </if>
+            <if test="weight != null">
+                and weight = #{weight}
+            </if>
+            <if test="education != null and education != ''">
+                and education = #{education}
+            </if>
+            <if test="school != null and school != ''">
+                and school = #{school}
+            </if>
+            <if test="job != null and job != ''">
+                and job = #{job}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="hometown != null and hometown != ''">
+                and hometown = #{hometown}
+            </if>
+            <if test="income != null and income != ''">
+                and income = #{income}
+            </if>
+            <if test="marriage != null and marriage != ''">
+                and marriage = #{marriage}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from t_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="uid != null">
+                and uid = #{uid}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            <if test="avatarImage != null and avatarImage != ''">
+                and avatar_image = #{avatarImage}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+            <if test="year != null">
+                and year = #{year}
+            </if>
+            <if test="month != null">
+                and month = #{month}
+            </if>
+            <if test="day != null">
+                and day = #{day}
+            </if>
+            <if test="constellation != null and constellation != ''">
+                and constellation = #{constellation}
+            </if>
+            <if test="height != null">
+                and height = #{height}
+            </if>
+            <if test="weight != null">
+                and weight = #{weight}
+            </if>
+            <if test="education != null and education != ''">
+                and education = #{education}
+            </if>
+            <if test="school != null and school != ''">
+                and school = #{school}
+            </if>
+            <if test="job != null and job != ''">
+                and job = #{job}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="hometown != null and hometown != ''">
+                and hometown = #{hometown}
+            </if>
+            <if test="income != null and income != ''">
+                and income = #{income}
+            </if>
+            <if test="marriage != null and marriage != ''">
+                and marriage = #{marriage}
+            </if>
+        </where>
+    </select>
+</mapper>
+

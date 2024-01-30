@@ -1,7 +1,7 @@
 # Maven模板工程
 
 ## 环境:
-- jdk8
+- jdk11
 - springboot2.7.3
 - tomcat:内置9.0.65
 - mysql:8.0.26
